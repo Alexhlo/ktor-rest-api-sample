@@ -1,0 +1,875 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Kto sample API",
+    "description": "Customer",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8888",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/customers/all": {
+      "get": {
+        "tags": [ "Customer controller" ],
+        "summary": "Returns a list of customers.",
+          "description": "check the customers",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "404": {
+              "description": "Customers not found"
+            },
+            "500": {
+              "description": "Customer service error"
+            }
+          }
+        }
+    },
+    "/customers/{id}": {
+      "get": {
+        "tags": [ "Customer controller" ],
+        "summary": "Returns a customer by id.",
+        "description": "Check the customer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Customer id"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "examples": {
+              "id": 0,
+              "firstName": "firstName",
+              "lastName": "lastName",
+              "email": "email"
+            },
+            "description": "OK"
+          },
+          "404": {
+            "description": "Customer not found"
+          },
+          "500": {
+            "description": "Customer service error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Customer controller" ],
+        "summary": "Delete a customer.",
+        "description": "Return OK after delete.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Customer id"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Customer not found"
+          },
+          "500": {
+            "description": "Customer service error"
+          }
+        }
+      }
+    },
+    "/customers/save": {
+      "post": {
+        "tags": [ "Customer controller" ],
+        "summary": "Add new customer.",
+        "description": "Return customer after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true,
+            "description": "Customer body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Customer not found"
+          },
+          "500": {
+            "description": "Customer service error"
+          }
+        }
+      }
+    },
+    "/customers/save/all": {
+      "post": {
+        "tags": [ "Customer controller" ],
+        "summary": "Add new customer list.",
+        "description": "Return true/false after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true,
+            "description": "Customer body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Customer not found"
+          },
+          "500": {
+            "description": "Customer service error"
+          }
+        }
+      }
+    },
+    "/customers/update": {
+      "post": {
+        "tags": [ "Customer controller" ],
+        "summary": "Add new customer.",
+        "description": "Return customer after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "required": [
+                    "true"
+                  ]
+                },
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": true,
+            "description": "Customer body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Customer not found"
+          },
+          "500": {
+            "description": "Customer service error"
+          }
+        }
+      }
+    },
+
+    "/products/all": {
+      "get": {
+        "tags": [ "Product controller" ],
+        "summary": "Returns a list of products.",
+        "description": "check the products",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "500": {
+            "description": "Product service error"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": [ "Product controller" ],
+        "summary": "Returns a product by id.",
+        "description": "Check the product",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Product id"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "examples": {
+              "id": 0,
+              "name": "name",
+              "description": "description",
+              "price": 0
+            },
+            "description": "OK"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "500": {
+            "description": "Product service error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Product controller" ],
+        "summary": "Delete a product.",
+        "description": "Return OK after delete.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Product id"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "500": {
+            "description": "Product service error"
+          }
+        }
+      }
+    },
+    "/products/save": {
+      "post": {
+        "tags": [ "Product controller" ],
+        "summary": "Add new product.",
+        "description": "Return product after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "Product body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "500": {
+            "description": "Product service error"
+          }
+        }
+      }
+    },
+    "/products/save/all": {
+      "post": {
+        "tags": [ "Product controller" ],
+        "summary": "Add new product list.",
+        "description": "Return true/false after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "Product body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "500": {
+            "description": "Product service error"
+          }
+        }
+      }
+    },
+    "/products/update": {
+      "post": {
+        "tags": [ "Product controller" ],
+        "summary": "Add new product.",
+        "description": "Return product after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "required": [
+                    "true"
+                  ]
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "Product body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "500": {
+            "description": "Product service error"
+          }
+        }
+      }
+    },
+
+    "/carts/all": {
+      "get": {
+        "tags": [ "Cart controller" ],
+        "summary": "Returns a list of carts.",
+        "description": "check the carts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Carts not found"
+          },
+          "500": {
+            "description": "Cart service error"
+          }
+        }
+      }
+    },
+    "/carts/{id}": {
+      "get": {
+        "tags": [ "Cart controller" ],
+        "summary": "Returns a cart by id.",
+        "description": "Check the cart",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Cart id"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "examples": {
+              "id": 0,
+              "customerId": 0
+            },
+            "description": "OK"
+          },
+          "404": {
+            "description": "Cart not found"
+          },
+          "500": {
+            "description": "Cart service error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Cart controller" ],
+        "summary": "Delete a cart.",
+        "description": "Return OK after delete.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Cart id"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Cart not found"
+          },
+          "500": {
+            "description": "Cart service error"
+          }
+        }
+      }
+    },
+    "/carts/save": {
+      "post": {
+        "tags": [ "Cart controller" ],
+        "summary": "Add new cart.",
+        "description": "Return cart after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "customerId": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "Cart body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Cart not found"
+          },
+          "500": {
+            "description": "Cart service error"
+          }
+        }
+      }
+    },
+    "/carts/save/all": {
+      "post": {
+        "tags": [ "Cart controller" ],
+        "summary": "Add new cart list.",
+        "description": "Return true/false after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "properties": {
+                "customerId": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "Cart body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Cart not found"
+          },
+          "500": {
+            "description": "Cart service error"
+          }
+        }
+      }
+    },
+    "/carts/update": {
+      "post": {
+        "tags": [ "Cart controller" ],
+        "summary": "Add new cart.",
+        "description": "Return cart after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "required": [
+                    "true"
+                  ]
+                },
+                "customerId": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "Cart body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Cart not found"
+          },
+          "500": {
+            "description": "Cart service error"
+          }
+        }
+      }
+    },
+
+    "/cartProducts/all": {
+      "get": {
+        "tags": [ "CartProduct controller" ],
+        "summary": "Returns a list of cartProducts.",
+        "description": "check the cartProducts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "CartProduct not found"
+          },
+          "500": {
+            "description": "CartProduct service error"
+          }
+        }
+      }
+    },
+    "/cartProducts/{id}": {
+      "get": {
+        "tags": [ "CartProduct controller" ],
+        "summary": "Returns a cartProduct by id.",
+        "description": "Check the cartProduct",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "CartProduct id"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "examples": {
+              "id": 0,
+              "customerId": 0
+            },
+            "description": "OK"
+          },
+          "404": {
+            "description": "CartProduct not found"
+          },
+          "500": {
+            "description": "CartProduct service error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "CartProduct controller" ],
+        "summary": "Delete a cart.",
+        "description": "Return OK after delete.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Cart id"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Cart not found"
+          },
+          "500": {
+            "description": "Cart service error"
+          }
+        }
+      }
+    },
+    "/cartProducts/save": {
+      "post": {
+        "tags": [ "CartProduct controller" ],
+        "summary": "Add new cartProduct.",
+        "description": "Return cartProduct after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cartId": {
+                  "type": "integer"
+                },
+                "productId": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "CartProduct body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "CartProduct not found"
+          },
+          "500": {
+            "description": "CartProduct service error"
+          }
+        }
+      }
+    },
+    "/cartProducts/save/all": {
+      "post": {
+        "tags": [ "CartProduct controller" ],
+        "summary": "Add new cartProduct list.",
+        "description": "Return true/false after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "array",
+              "properties": {
+                "cartId": {
+                  "type": "integer"
+                },
+                "productId": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "CartProduct body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "CartProduct not found"
+          },
+          "500": {
+            "description": "CartProduct service error"
+          }
+        }
+      }
+    },
+    "/cartProducts/update": {
+      "post": {
+        "tags": [ "CartProduct controller" ],
+        "summary": "Add new cartProduct.",
+        "description": "Return cartProduct after saving.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "required": [
+                    "true"
+                  ]
+                },
+                "cartId": {
+                  "type": "integer"
+                },
+                "productId": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": true,
+            "description": "CartProduct body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Cart not found"
+          },
+          "500": {
+            "description": "Cart service error"
+          }
+        }
+      }
+    }
+  }
+}
